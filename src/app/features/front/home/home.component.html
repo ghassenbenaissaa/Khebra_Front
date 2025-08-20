@@ -1,0 +1,123 @@
+<section class="pt-0 pb-0" id="home">
+  <div class="slider-bg">
+    <div class="slide-img" style="background-image: url('assets/images/slides/home-bg-1.jpg')">
+      <div class="hero-text-wrap">
+        <div class="hero-text white-color">
+          <div class="container text-center">
+            <h1 class="white-color font-700">Bienvenue chez Khebra</h1>
+            <div *ngIf="isAuthenticated">
+              <h3 class="title raleway-font">
+                Rédigez votre problème, nous vous proposons une solution.
+              </h3>
+                               <div class="mt-4">
+                   <div style="max-width: 600px; margin: 0 auto;">
+                     <div class="search-container">
+                       <input type="text"
+                             [(ngModel)]="problemDescription"
+                             (input)="onProblemInput($event)"
+                             (keyup)="onEnterKey($event)"
+                             placeholder="Décrivez votre besoin ou votre problème..."
+                             class="form-control search-input">
+                       <button class="btn btn-primary search-button" 
+                               (click)="getRecommendations()">
+                         Rechercher
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+            </div>
+            <div *ngIf="!isAuthenticated">
+              <h3 class="title raleway-font">
+                Connectez-vous pour utiliser notre outil d'IA qui vous aide à résoudre vos problèmes.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="grey-bg" id="expertises">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center" style="margin-bottom: 32px;">
+        <h1 class="raleway-font default-color">Nos Expertises</h1>
+        <p style="max-width:600px;margin:12px auto 0 auto;">
+          Découvrez les domaines d'expertise que nous mettons à votre service.
+        </p>
+      </div>
+    </div>
+    <div class="portfolio-grid">
+      <div *ngFor="let domaine of domaines" class="portfolio with-spacing">
+        <div class="portfolio-item2">
+          <a [routerLink]="['/experts']" [queryParams]="{domain: domaine.name}">
+            <img [src]="domaine.imageUrl || 'assets/images/portfolio/grid/1.jpg'" alt="" />
+            <div class="portfolio-info-home gradient-bg">
+              <div class="centrize">
+                <div class="v-center white-color">
+                  <p>{{domaine.name}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-bg fixed-bg" style="background-image: url('assets/images/background/parallax-bg-2.jpg')">
+    <div class="gradient-overlay-bg-two"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center parallax-content height-400px">
+                <div class="center-layout">
+                    <div class="v-align-middle">
+                        <h1 class="font-400 white-color raleway-font xs-font-40px">Trouvez un expert. Résolvez un problème.
+                          <br>Khebra facilite votre démarche.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="grey-bg" id="expert">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 centerize-col text-center">
+        <div class="section-title">
+          <h1 class="raleway-font default-color">Nos Experts</h1>
+        </div>
+        <p>Rencontrez les professionnels qui partagent leur savoir pour répondre à vos besoins.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="portfolio-grid-experts">
+      <div *ngFor="let expert of experts" class="portfolio-item-experts with-spacing">
+        <a (click)="viewProfile(expert)">
+          <img
+            [src]="expert.image?.imageUrl || 'assets/images/portfolio/grid/user.jpg'"
+            alt="{{ expert.firstname }} {{ expert.lastname }}"
+          />
+          <div class="portfolio-info-experts gradient-bg">
+            <div class="centrize">
+              <div class="v-center white-color">
+                <h3>{{ expert.firstname }} {{ expert.lastname }}</h3>
+                <p>{{ expert.domaineExpertise }}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div class="text-center mt-4">
+    <button class="btn btn-primary btn-lg px-5 py-3" style="font-size: 0.8rem; border-radius: 2rem;" routerLink="/experts">Afficher plus</button>
+  </div>
+</section>

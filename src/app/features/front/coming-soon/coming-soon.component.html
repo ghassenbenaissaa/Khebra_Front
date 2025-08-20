@@ -1,0 +1,47 @@
+<section class="parallax-bg fixed-bg comingsoon-bg" style="background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('assets/images/background/comingsoon-bg.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-wrap">
+                    <div class="logo-box">
+                       <img src="assets/images/logo-white-dot.png">
+                    </div>
+                    <div class="cta-box">
+                       <h1>We Will Be Back <span class="highlight">Soon!</span></h1>
+                       <p>We are using this time to give our website a revamp!<br>
+                          Please leave us your email and we will let you know when we are back up.
+                       </p>
+                       <p class="mt-30 mb-0"><a class="btn btn-lg btn-gradient-primary btn-square" routerLink="/home-one">Go Back Home</a></p>
+                    </div>
+                    <div class="social-icons-style-01">
+                        <ul class="md-icon mt-50">
+                            <li *ngFor="let social of socialMedia">
+                                <a [ngClass]="social.iconClass" href="javascript:void(0)"><i [ngClass]="social.icon"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="countdown-container mt-50 mb-0">
+                        <ul class="countdown">
+                            <li class="white-color">
+                                <span class="days font-80px font-400 gradient-color">{{countdown.days}}</span>
+                                <p class="text-uppercase font-30px">days</p>
+                            </li>
+                            <li class="white-color">
+                                <span class="hours font-80px font-400 gradient-color">{{countdown.hours}}</span>
+                                <p class="text-uppercase font-30px">hours </p>
+                            </li>
+                            <li class="white-color">
+                                <span class="minutes font-80px font-400 gradient-color">{{countdown.minutes}}</span>
+                                <p class="text-uppercase font-30px">minutes</p>
+                            </li>
+                            <li class="white-color">
+                                <span class="seconds font-80px font-400 gradient-color">{{countdown.seconds}}</span>
+                                <p class="text-uppercase font-30px">seconds</p>
+                            </li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>

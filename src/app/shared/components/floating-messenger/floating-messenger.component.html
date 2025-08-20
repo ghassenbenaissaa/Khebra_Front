@@ -1,0 +1,114 @@
+<div class="floating-messenger" [class.expanded]="isExpanded">
+  <!-- Bouton principal flottant -->
+  <div class="messenger-button" (click)="toggleMessenger()" *ngIf="!isExpanded">
+    <div class="messenger-icon">
+      <i class="feather icon-message-circle"></i>
+    </div>
+    <!--<div class="notification-badge" *ngIf="unreadCount > 0">
+      {{ unreadCount > 99 ? '99+' : unreadCount }}
+    </div>-->
+  </div>
+
+  <!-- Fenêtre de messagerie -->
+  <div class="messenger-window" *ngIf="isExpanded">
+    <!-- Header -->
+    <div class="messenger-header">
+      <div class="header-content">
+        <div class="messenger-title">
+          <i class="feather icon-message-circle me-2"></i>
+          <span>Messagerie</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-sm btn-link" (click)="closeMessenger()" title="Fermer">
+            <i class="feather icon-x"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenu de la messagerie -->
+    <div class="messenger-content">
+      <div class="conversations-list" *ngIf="!selectedConversation">
+        <div class="conversation-item" *ngFor="let conversation of conversations"
+             (click)="selectConversation(conversation)">
+          <ng-container *ngIf="getOtherParticipant(conversation) as other">
+            <div class="conversation-avatar">
+              <img [src]="other.imageUrl" [alt]="other.fullName">
+            </div>
+            <div class="conversation-info">
+              <div class="conversation-name">{{ other.fullName }}</div>
+              <div class="conversation-preview">{{ conversation.messages[0].text }}</div>
+            </div>
+
+          </ng-container>
+
+
+          <div class="conversation-meta">
+            <div class="conversation-time">{{ conversation.messages[0].timestamp | date:"short" }}</div>
+            <!--<div class="unread-indicator" *ngIf="conversation.unreadCount > 0">
+              {{ conversation.unreadCount }}
+            </div>-->
+          </div>
+        </div>
+        <div class="load-more mt-3 text-center" *ngIf="page < totalPages">
+          <button
+            class="btn btn-outline-primary btn-sm"
+            (click)="loadMoreConversations()"
+            [disabled]="loading">
+
+            <span *ngIf="!loading">Load More</span>
+            <span *ngIf="loading">
+      <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+      Loading...
+    </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat individuel -->
+      <div class="chat-window" *ngIf="selectedConversation">
+        <div class="chat-header">
+          <button class="btn btn-sm btn-link" (click)="backToConversations()">
+            <i class="feather icon-arrow-left"></i>
+          </button>
+          <div class="chat-user-info" *ngIf="selectedConversation">
+            <img [src]="getOtherParticipant(selectedConversation).imageUrl"
+                 [alt]="getOtherParticipant(selectedConversation).fullName">
+            <span>{{ getOtherParticipant(selectedConversation).fullName }}</span>
+          </div>
+
+
+        </div>
+
+        <div class="chat-messages" #messagesContainer>
+          <div
+            class="message"
+            *ngFor="let message of selectedConversation.messages"
+            [class.sent]="message.senderId === currentUserId"
+            [class.received]="message.senderId !== currentUserId"
+          >
+            <div class="message-content">{{ message.text }}</div>
+            <div class="message-time">{{ message.timestamp | date:'short' }}</div>
+          </div>
+        </div>
+
+
+
+      <div class="chat-input">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tapez votre message..."
+                     [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+              <button class="btn btn-primary" (click)="sendMessage()">
+                <i class="feather icon-send"></i>
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>

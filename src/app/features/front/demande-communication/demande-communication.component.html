@@ -1,0 +1,39 @@
+<div class="col-xl-12">
+  <app-card
+    cardTitle="Demandes"
+    [options]="false"
+    blockClass="table-border-style"
+  >
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th *ngIf="isClient">Expert Email</th>
+          <th *ngIf="isExpert">Client Email</th>
+          <th>Timestamp</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let demande of demandes; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ demande.expertEmail }}</td>
+          <td>{{ demande.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td style="max-width: 300px; word-wrap: break-word; white-space: pre-wrap;">{{ getTruncatedMessage(demande.message) }}</td>
+          <td>{{ getStatusLabel(demande.status) }}</td>
+          <td>
+            <button
+              class="btn btn-info"
+              (click)="showDetails(demande)">
+              Détails
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>

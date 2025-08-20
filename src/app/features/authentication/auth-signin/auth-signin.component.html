@@ -1,0 +1,85 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <i class="feather icon-unlock auth-icon"></i>
+        </div>
+        <h3 class="mb-4">Connexion</h3>
+
+        <div class="input-group mb-3">
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="formData.email"
+            required
+            email
+            class="form-control"
+            placeholder="Adresse e-mail"
+            #email="ngModel"
+            autocomplete="username" />
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger mb-3 text-start">
+          <small *ngIf="email.errors?.['required']">L'adresse e-mail est requise.</small>
+          <small *ngIf="email.errors?.['email']">Veuillez entrer une adresse e-mail valide.</small>
+        </div>
+
+        <div class="input-group mb-4 position-relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
+            minlength="8"
+            class="form-control"
+            placeholder="Mot de passe"
+            #password="ngModel"
+            autocomplete="current-password"
+          />
+          <span
+            class="input-group-text password-toggle"
+            style="cursor:pointer; position:absolute; right:10px; top:50%; transform:translateY(-50%); background:transparent; border:none;"
+            (click)="togglePasswordVisibility()"
+          >
+            <i class="feather" [ngClass]="showPassword ? 'icon-eye-off' : 'icon-eye'"></i>
+          </span>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger mb-3 text-start">
+          <small *ngIf="password.errors?.['required']">Le mot de passe est requis.</small>
+          <small *ngIf="password.errors?.['minlength']">Le mot de passe doit comporter au moins 8 caractères.</small>
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{ errorMessage }}</div>
+
+        <div class="form-group text-start mb-4">
+          <div class="checkbox checkbox-fill d-inline">
+            <input
+              type="checkbox"
+              name="checkbox-fill-1"
+              id="checkbox-fill-a1"
+              checked=""
+            />
+            <label for="checkbox-fill-a1" class="cr"> Enregistrer les informations</label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary mb-4" type="submit" [disabled]="form.invalid || isLoading">
+          {{ isLoading ? 'Connexion en cours...' : 'Se connecter' }}
+        </button>
+
+        <p class="mb-2 text-muted">
+          Mot de passe oublié ? <a [routerLink]="['/auth/forgot-password']">Réinitialiser</a>
+        </p>
+        <p class="mb-0 text-muted">
+          Vous n'avez pas de compte ? <a [routerLink]="['/auth/type']">Créer un compte</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,78 @@
+<!-- profile.component.html -->
+<div class="profile-card">
+  <div class="profile-header text-center">
+    <div class="relative inline-block">
+      <label for="fileInput" class="edit-icon-button">
+        <!-- SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="edit-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+        </svg>
+      </label>
+
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" class="hidden-input" />
+
+
+    </div>
+
+    <img
+      *ngIf="user?.image?.imageUrl; else noImage"
+      [src]="imageUrl$ | async"
+      alt="Profile image"
+      class="profile-image rounded-circle  mx-auto"
+    />
+    <ng-template #noImage>
+
+      <div class="avatar text-4xl font-bold">
+        {{ user?.firstname.charAt(0) }}{{ user?.lastname.charAt(0) }}
+      </div>
+    </ng-template>
+
+    <h2 *ngIf="!isEditing">{{ user?.firstname }} {{ user?.lastname }}</h2>
+  </div>
+
+  <!-- Shared Profile Info -->
+  <div class="profile-info" *ngIf="!isEditing">
+    <div><strong>Email:</strong> {{ user?.email }}</div>
+    <div><strong>Address:</strong> {{ user?.adresse }}</div>
+    <div><strong>Phone Number:</strong> {{ user?.numTel }}</div>
+    <div><strong>CIN:</strong> {{ user?.cin }}</div>
+    <div *ngIf="userRole === 'ROLE_CLIENT'"><strong>Interest:</strong> {{ user?.interet }}</div>
+  </div>
+
+  <div class="profile-info" *ngIf="isEditing">
+    <form class="space-y-3">
+      <!-- Shared fields -->
+      <input [(ngModel)]="editableUser.firstname" name="firstname" placeholder="First Name" class="form-control" />
+      <input [(ngModel)]="editableUser.lastname" name="lastname" placeholder="Last Name" class="form-control" />
+      <input [(ngModel)]="editableUser.adresse" name="adresse" placeholder="Address" class="form-control" />
+      <input [(ngModel)]="editableUser.numTel" name="numTel" placeholder="Phone Number" class="form-control" />
+      <input [(ngModel)]="editableUser.cin" name="cin" placeholder="CIN" class="form-control" />
+      <input *ngIf="userRole === 'CLIENT'" [(ngModel)]="editableUser.interet" name="interet" placeholder="Interest" class="form-control" />
+
+      <!-- Expert-specific fields -->
+      <ng-container *ngIf="userRole === 'ROLE_EXPERT'">
+        <input [(ngModel)]="editableUser.expertise" name="expertise" placeholder="Expertise" class="form-control" />
+        <input [(ngModel)]="editableUser.domaineExpertise" name="domaineExpertise" placeholder="Domain Expertise" class="form-control" />
+        <textarea [(ngModel)]="editableUser.biographie" name="biographie" placeholder="Biography" class="form-control"></textarea>
+        <input type="number" [(ngModel)]="editableUser.rating" name="rating" placeholder="Rating" class="form-control" min="0" max="5" step="0.1" />
+      </ng-container>
+    </form>
+  </div>
+
+  <!-- Expert additional info in display mode -->
+  <div class="profile-info" *ngIf="!isEditing && userRole === 'EXPERT'">
+    <div><strong>Expertise:</strong> {{ user.expertise || 'Not specified' }}</div>
+    <div><strong>Domain Expertise:</strong> {{ user.domaineExpertise || 'Not specified' }}</div>
+    <div><strong>Biography:</strong> {{ user.biographie || 'Not specified' }}</div>
+    <div><strong>Rating:</strong> {{ user.rating || 'Not rated' }}</div>
+  </div>
+
+  <!-- Actions -->
+  <div class="profile-actions flex justify-center space-x-4 mt-4">
+    <button *ngIf="!isEditing" (click)="enableEdit()" class="btn btn-primary">Edit Profile</button>
+    <div *ngIf="isEditing" class="flex space-x-2">
+      <button (click)="saveChanges()" class="btn btn-success">Save</button>
+      <button (click)="discardChanges()" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+</div>

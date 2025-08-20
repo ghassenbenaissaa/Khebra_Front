@@ -1,0 +1,81 @@
+.expert-not-validated-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f8fa;
+}
+
+.expert-not-validated-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.icon-container {
+  background: #fff3e0;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem auto;
+}
+.icon-container.banned i {
+  font-size: 2.2rem;
+  color: #ff9800;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #c00;
+  margin-bottom: 0.2rem;
+}
+.subtitle {
+  color: #c00;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.info-text {
+  color: #666;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+}
+.contact-link {
+  color: #1976d2;
+  text-decoration: underline;
+  font-weight: 500;
+  word-break: break-all;
+}
+.home-btn {
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.5rem;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+.home-btn:hover, .home-btn:focus {
+  background: #125ea2;
+  outline: none;
+}
+@media (max-width: 600px) {
+  .expert-not-validated-card {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+} 

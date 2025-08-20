@@ -1,0 +1,45 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <i class="feather icon-user auth-icon"></i>
+        </div>
+        <h3 class="mb-4">Choisissez le type de compte</h3>
+
+        <div class="form-group w-100">
+          <select
+            class="form-control custom-select"
+            [(ngModel)]="selectedType"
+            name="userType"
+            required>
+            <option value="" disabled selected>Sélectionnez un type</option>
+            <option value="Client">Client</option>
+            <option value="Expert">Expert</option>
+          </select>
+        </div>
+
+
+
+        <button
+          class="btn btn-primary shadow-2 mb-4"
+          [disabled]="!selectedType"
+          (click)="validateChoice()"
+        >
+          Continuer
+        </button>
+
+        <p class="mb-0 text-muted">
+          Vous avez déjà un compte ?
+          <a [routerLink]="['/auth/signin']">Se connecter</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

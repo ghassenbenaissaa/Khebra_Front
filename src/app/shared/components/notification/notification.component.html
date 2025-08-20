@@ -1,0 +1,31 @@
+<div class="notification-wrapper px-3 py-2">
+  <div class="notification-head mb-3">
+    <h6 class="text-center m-0">Notifications</h6>
+  </div>
+
+  <!-- Scrollable container -->
+  <div class="notification-scroll" style="max-height: 300px; overflow-y: auto;">
+    <ul class="list-unstyled m-0">
+      <li *ngFor="let notif of displayedNotifications" class="d-flex align-items-start mb-3">
+        <img
+          [src]="notif.senderImageUrl"
+          alt="avatar"
+          class="me-2 rounded-circle"
+          width="40"
+          height="40"
+        />
+        <div>
+          <p class="m-0 fw-bold">
+            {{ notif.senderName }}
+            <span class="text-muted ms-2 small">{{ notif.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+          </p>
+          <small>{{ notif.message }}</small>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="notification-footer mt-3 text-center" *ngIf="hasMore">
+    <a href="javascript:void(0)" (click)="loadMore()">Show more</a>
+  </div>
+</div>

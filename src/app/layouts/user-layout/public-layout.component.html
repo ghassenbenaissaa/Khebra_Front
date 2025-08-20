@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+  <div class="main-content d-flex">
+    <app-sidebar *ngIf="isProfilePage || isDemande"></app-sidebar>
+
+    <div class="content flex-grow-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <app-footer *ngIf="showFooter"></app-footer>
+  <ngx-scrolltop></ngx-scrolltop>
+</div>
+
+<!-- Composant de messagerie flottant -->
+<app-floating-messenger *ngIf="isConnected"></app-floating-messenger>

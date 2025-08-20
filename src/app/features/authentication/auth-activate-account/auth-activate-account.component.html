@@ -1,0 +1,15 @@
+<div class="activation-container" *ngIf="!loading">
+  <h2>Activation du compte</h2>
+
+  <p *ngIf="success" class="message success">
+    Votre compte a été activé. Vous pouvez maintenant vous connecter.
+  </p>
+
+  <p *ngIf="error" class="message error">
+    {{ error }}
+  </p>
+</div>
+
+<div class="activation-container" *ngIf="loading">
+  <p class="loading">Activation de votre compte, veuillez patienter...</p>
+</div>

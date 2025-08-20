@@ -1,0 +1,20 @@
+<div class="expert-not-validated-wrapper">
+  <div class="expert-not-validated-card">
+    <div class="icon-container not-activated">
+      <i class="feather icon-mail" aria-hidden="true"></i>
+    </div>
+    <h2>Compte non activé</h2>
+    <p class="subtitle">
+      Votre compte n'est pas encore activé.<br>
+      Veuillez vérifier votre boîte mail pour activer votre compte.
+    </p>
+    <p class="info-text">
+      Si vous n'avez pas reçu d'e-mail, cliquez sur le bouton ci-dessous pour en recevoir un nouveau.
+    </p>
+    <button class="home-btn" (click)="resendActivation()" [disabled]="isLoading">
+      {{ isLoading ? 'Envoi en cours...' : 'Renvoyer l\'e-mail d\'activation' }}
+    </button>
+    <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+    <button class="home-btn" routerLink="/home">Retour à l'accueil</button>
+  </div>
+</div>

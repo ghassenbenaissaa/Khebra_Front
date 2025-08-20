@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<div class="transition-none">
+    <section class="title-hero-bg" style="background-image: url(assets/images/title-bg/title-bg-3.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-title text-center white-color">
+              <h1 class="raleway-font font-300">Counters</h1>
+              <div class="breadcrumb mt-20">
+                  <!-- Breadcrumb Start -->
+                    <ul>
+                        <li><a routerLink="/home-one">Home</a></li>
+                        <li>Counters</li>
+                    </ul>
+                  <!-- Breadcrumb End -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+</div>
+
+<section class="white-bg">
+    <div class="container">
+        <div class="row">
+        	<div class="col-sm-8 section-heading">
+              <h4 class="text-uppercase mt-0">Counter Style 01</h4>
+        	</div>
+        </div>
+        <div class="row mt-50 row-flex flex-center">
+            <div *ngFor="let fact of funFacts" class="col-md-3 col-sm-6 col-xs-12">
+                <div class="counter-wrap">
+                    <i [ngClass]="fact.icon"></i>
+                    <h2><span class="counter font-600">{{fact.displayedNumber | number:'1.0-0'}}</span></h2>
+                    <h3 class="dark-color font-200">{{fact.desc}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="parallax-bg fixed-bg" style="background: url('assets/images/background/parallax-bg.jpg');">
+    <div class="parallax-overlay"></div>
+    <div class="container">
+        <div class="row">
+        	<div class="col-sm-8 section-heading white-color">
+              <h4 class="text-uppercase mt-0">Counter Style 02</h4>
+        	</div>
+        </div>
+        <div class="row counter-type-3 row-flex flex-center">
+            <div *ngFor="let fact of funFactsTwo" class="col-md-3 col-sm-5 xs-mb-40 sm-mb-40 xs-ml-40 sm-ml-40">
+                <div class="counter-wrap">
+                    <div class="float-start">
+                        <i [ngClass]="fact.icon"></i>
+                    </div>
+                    <div class="float-start pl-20">
+                        <h2><span class="counter font-600 white-color">{{fact.displayedNumber | number:'1.0-0'}}</span></h2>
+                        <div class="line white-bg"></div>
+                        <h3 class="white-color text-uppercase">{{fact.desc}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="white-bg">
+    <div class="container">
+    	<div class="row">
+        	<div class="col-sm-8 section-heading">
+              <h4 class="text-uppercase mt-0">Counter Style 03</h4>
+        	</div>
+        </div>
+        <div class="row mt-50">
+          <div *ngFor="let fact of funFactsThree" class="col-md-3 col-sm-6 xs-mb-40 sm-mb-20 xs-ml-40">
+            <div class="counter-type-2 relative">
+                <i [ngClass]="fact.icon"></i>
+                <h3 class="display-block mt-0 mb-0"><span class="counter font-600 dark-color">{{fact.displayedNumber | number:'1.0-0'}}</span></h3>
+                <h6 class="text-uppercase mt-0">{{fact.desc}}</h6>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+
+<section class="gradient-bg">
+    <div class="container">
+        <div class="row">
+        	<div class="col-sm-8 section-heading white-color">
+              <h4 class="text-uppercase mt-0">Counter Style 04</h4>
+        	</div>
+        </div>
+        <div class="row counter-type-3 row-flex flex-center">
+            <div *ngFor="let fact of funFactsTwo" class="col-md-3 col-sm-5 xs-mb-40 sm-mb-40 xs-ml-40 sm-ml-40">
+                <div class="counter-wrap">
+                    <div class="float-start">
+                        <i [ngClass]="fact.icon"></i>
+                    </div>
+                    <div class="float-start pl-20">
+                        <h2><span class="counter font-600 white-color">{{fact.displayedNumber | number:'1.0-0'}}</span></h2>
+                        <div class="line white-bg"></div>
+                        <h3 class="white-color text-uppercase">{{fact.desc}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

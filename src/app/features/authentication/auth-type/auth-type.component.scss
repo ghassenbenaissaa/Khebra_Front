@@ -1,0 +1,14 @@
+.custom-select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  transition: border-color 0.2s ease;
+  text-overflow: ellipsis;
+}

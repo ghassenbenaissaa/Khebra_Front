@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xl-12">
+    <app-card
+      cardTitle="Liste des Experts"
+      [options]="false"
+      blockClass="table-border-style"
+    >
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Domaine</th>
+            <th>Validation</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let expert of experts; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ expert.lastname }}</td>
+            <td>{{ expert.firstname }}</td>
+            <td>{{ expert.email }}</td>
+            <td>{{ expert.domaineExpertise }}</td>
+            <td>
+              <span *ngIf="expert.isBanned" class="badge bg-danger">
+                <i class="bi bi-x-circle"></i> Banni
+              </span>
+              <span *ngIf="!expert.isBanned && expert.isValidated" class="badge bg-success">
+                <i class="bi bi-check-circle"></i> Validé
+              </span>
+              <span *ngIf="!expert.isBanned && !expert.isValidated" class="badge bg-warning text-dark">
+                <i class="bi bi-exclamation-circle"></i> Non validé
+              </span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-info" (click)="openExpertModal(expert)">
+                Détails
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<div class="pagination-container" style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
+  <button class="btn btn-outline-primary" [disabled]="currentPage === 0" (click)="onPageChange({ pageIndex: currentPage - 1, pageSize: pageSize })">
+    Précédent
+  </button>
+  <span style="margin: 0 1rem;">
+    Page {{ currentPage + 1 }} / {{ totalPages }}
+  </span>
+  <button class="btn btn-outline-primary" [disabled]="(currentPage + 1) * pageSize >= totalItems" (click)="onPageChange({ pageIndex: currentPage + 1, pageSize: pageSize })">
+    Suivant
+  </button>
+</div>

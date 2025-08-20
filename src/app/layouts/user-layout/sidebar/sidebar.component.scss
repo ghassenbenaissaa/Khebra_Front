@@ -1,0 +1,13 @@
+.sidebar-container {
+  position: fixed;
+  top: 60px; // exactly your navbar height
+  left: 0;
+  width: 50px;
+  height: calc(100vh - 60px);
+}
+.sidebar-container .nav-link:hover {
+  background-color: #e9ecef; /* light gray on hover */
+  color: #000; /* ensure text remains visible */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}

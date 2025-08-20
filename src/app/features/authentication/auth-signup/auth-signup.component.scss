@@ -1,0 +1,71 @@
+.auth-wrapper .auth-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  padding: 15px;
+}
+
+.auth-content, .card-body {
+  overflow: visible !important;
+}
+
+#map {
+  width: 100%;
+  min-width: 250px;
+  height: 400px;
+  border-radius: 8px;
+}
+
+.btn-create-account {
+  display: block;
+  margin: 24px auto 16px auto;
+  width: auto;
+  min-width: 180px;
+  max-width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.col-md-6.text-start .form-control,
+.col-md-6.text-start textarea.form-control {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .auth-wrapper .card-body .row {
+    display: flex;
+    align-items: stretch;
+  }
+  .auth-wrapper .card-body .row > div {
+    /* Espace entre les colonnes */
+    padding-right: 16px;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .auth-wrapper .card-body .row {
+    flex-direction: column;
+  }
+  .auth-wrapper .card-body .row > div {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 24px;
+  }
+  #map {
+    min-width: 0;
+    height: 250px;
+  }
+  .btn-create-account {
+    width: 100%;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+

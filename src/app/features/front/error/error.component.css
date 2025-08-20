@@ -1,0 +1,49 @@
+.image-402 {
+  max-width: 60%;     /* Contrôle la taille max de l’image */
+  height: auto;       /* Garde le ratio */
+  display: block;     /* Pour centrer */
+  margin: 0 auto;     /* Centrage horizontal */
+}
+.error-container {
+  display: flex;
+  align-items: center;     /* Centrage vertical */
+  justify-content: center; /* Centrage horizontal */
+  height: 70vh;            /* 100% de la hauteur de la fenêtre */
+}
+
+@media (max-width: 768px) {
+  .image-404 {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-404 {
+    max-width: 90%;
+  }
+}
+
+
+.custom-btn {
+  padding: 15px 40px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.custom-btn:hover {
+  background: linear-gradient(to right, #00f2fe, #4facfe);
+}
+
+
+.error-message {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}

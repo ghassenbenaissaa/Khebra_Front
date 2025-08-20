@@ -1,0 +1,9 @@
+nav.navbar.bootsnav.navbar-transparent.brand-center .navbar-brand2{padding: 12px 15px;}
+
+
+.navbar-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}

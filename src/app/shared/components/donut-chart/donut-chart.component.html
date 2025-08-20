@@ -1,0 +1,18 @@
+<div *ngIf="isEmpty; else showChart" class="text-center text-muted p-3">
+  Aucun graphique disponible pour cet expert.
+</div>
+<ng-template #showChart>
+<div class="col-md-12 mb-2">
+  <app-card cardTitle="Etat des demandes de cet expert:" [options]="false">
+    <apx-chart
+      [series]="donutChart.series"
+      [chart]="donutChart.chart"
+      [labels]="donutChart.labels"
+      [colors]="donutChart.colors"
+      [legend]="donutChart.legend"
+      [dataLabels]="donutChart.dataLabels"
+      [plotOptions]="donutChart.plotOptions"
+    ></apx-chart>
+  </app-card>
+</div>
+</ng-template>
